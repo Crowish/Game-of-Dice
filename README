@@ -15,7 +15,7 @@ Scoring:
 
 	three of more of a kind cauted as base_value_for_three_of_a_kind * (number_of_dices_of_a_kind - 2)
 
-straight (1-2-3-4-5-6) scoring 3000
+	straight (1-2-3-4-5-6) scoring 3000
 
 requirements:
 	-python

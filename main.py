@@ -42,7 +42,7 @@ if __name__ == '__main__':
             no_players = int(input("Set number of players: "))
             counter = rounds * no_players
         except ValueError:
-            print("Those weren't relly just numbers, where they...?"\
+            print("That wasn't really just number, was it...?"\
                   "\nCome on, try again\n")
     players = {}
     for i in range(1, no_players+1):

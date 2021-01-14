@@ -17,16 +17,16 @@ class Player(object):
             self.cpu = False
         else:
             try:
-                self.cpu = Player.cpu_dict[input("Do you want Player "+str(num)+" to be cpu? (yes/no)\n")]
+                self.cpu = Player.cpu_dict[input("\nDo you want Player "+str(num)+" to be cpu? (yes/no)\n")]
             except:
                 #print("Error: Wrong input. This player will be set as cpu.")
-                print("Since user failed to answer simple question, we decided this player will belong to machine")
+                print("\nSince user failed to answer simple question, we decided this player will belong to machine")
                 self.cpu = True
         if self.cpu == True:
             self.name = "RoboPlayer "+str(Player.i)
             Player.i += 1
         else:
-            self.name = input(f"Set name for Player {num}\n")
+            self.name = input(f"\nSet name for Player {num}\n")
         self.score=0
         
     def get_name(self):

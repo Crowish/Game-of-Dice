@@ -52,7 +52,7 @@ if __name__ == '__main__':
         player_counter = i%no_players+1
         print("\n\n\n\n\n"+players[player_counter].get_name()+" playing!")
         if players[player_counter].is_cpu():
-            players[player_counter].add_score_for_cpu(randrange(0,3000, 50))
+            players[player_counter].add_score_for_cpu(randrange(0,randrange(0,3000, 50), 50))
         else:
             players[player_counter].add_score(play_hand())
     print("\n\n")

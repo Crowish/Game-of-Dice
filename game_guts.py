@@ -29,7 +29,6 @@ def play_hand():
             return 0
             
         if hand.reroll_valid(rerolled) == 0 and len(rerolled) != 0:
-            hand.show_hand()
             print("Reroll did not produce any score\n"\
                   "Your points are lost\n"\
                   "End of turn")
@@ -39,13 +38,12 @@ def play_hand():
             rerolled = hand.reroll_unstored()
             print("\n\n\n...rerolling unstored dice...\n\n\n")
             curr_score = hand.update_score(stored)
-            hand.show_hand()
             print("Current score for stored:", curr_score)
         else:
             stored = hand.store(input("Pick dice to store (numbers 1-6 separated by whitespace)\n"))
             rerolled = hand.reroll_unstored()
             curr_score = hand.update_score(stored)      
-    hand.show_hand()      
+        hand.show_hand()      
     print("\nAll dice stored,", curr_score, "points added to player's total score")
     return curr_score
 

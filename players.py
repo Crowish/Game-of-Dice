@@ -43,5 +43,5 @@ class Player(object):
         return self.cpu
     
     def get_total_score(self):
-        print(f"{self.name} scored total of {self.score} points")
+        return self.score
     

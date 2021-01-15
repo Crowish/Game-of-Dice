@@ -1,0 +1,25 @@
+Farkle is a played by two or more players*, the first one to reach the specified amount of points wins (usually 4000).
+
+One's turn ends either by:
+
+    Passing the turn by storing all dice.
+    Getting a 'bust' by rolling and not having any scoring dice.
+
+The goal of this two-player game is to be the first to reach a certain number of points.
+
+Six dice are thrown and the players alternate turns. Points are gained for every 1 or 5 thrown, and for three or more of a kind of any other number. Scoring is as follows:
+
+    a single 1 is worth 100 points;
+    a single 5 is worth 50 points;
+    three of a kind is worth 100 points multiplied by the given number, e.g. three 4s are worth 400 points;
+    three 1's are worth 1,000 points;
+    four or more of a kind is worth double the points of three of a kind, so four 4s are worth 800 points, five 4s are worth 1,600 points etc.
+    full straight 1-6 is worth 1500 points.
+    partial straight 1-5 is worth 500 points.
+    partial straight 2-6 is worth 750 points.
+
+A player's turn always begins by throwing all six dice. Then the player select and set aside scoring dice, and at least one die must always be set aside. Then the player can throw the remaining dice again and the situation repeats. Scoring combinations are counted only for the current throw, not the entire turn.
+
+The key element of the game is that if a throw does not produce a single scoring die, then the player's turn is over and all points scored up to that throw are forfeit. It is then the opposing player's turn to throw. For that reason, it's best to end your turn before the risk that not a single die will score gets too high. Sometimes it's better not to set aside all the scoring dice you you've thrown, so you stand a better chance of scoring higher on the next throw.
+
+*this implementation allows single play as well

@@ -23,8 +23,6 @@ def play_hand():
     hand.show_hand()
     rerolled = hand.return_unstored()
     while not hand.all_stored():
-#        stored = hand.store(input("Pick dices to store (numbers 1-6 separated by whitespace)\n"))
-#        rerolled = hand.reroll_unstored()
         if len(rerolled) == 6 and hand.reroll_valid(rerolled) == 0:
             print("Tough luck! No scoring dice here...\n"\
                   "Your turn is lost")
@@ -47,8 +45,6 @@ def play_hand():
             stored = hand.store(input("Pick dice to store (numbers 1-6 separated by whitespace)\n"))
             rerolled = hand.reroll_unstored()
             curr_score = hand.update_score(stored)      
-        stored = hand.store(input("Pick dice to store (numbers 1-6 separated by whitespace)\n"))
-        rerolled = hand.reroll_unstored()
     hand.show_hand()      
     print("\nAll dice stored,", curr_score, "points added to player's total score")
     return curr_score

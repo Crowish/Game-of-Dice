@@ -7,7 +7,7 @@ Created on Tue Jan 12 13:25:12 2021
 """
 import random
 import score
-from print_dices import print_dices
+from printing import print_dices
 
 NUMBER_OF_DICES = 6
 DICE_SIDES = 6
@@ -18,10 +18,10 @@ class Hand(object):
         self.dices = {}
         for i in range(1,NUMBER_OF_DICES+1):
             self.dices["D" + str(i)] = Dice()
+        self.hand_score = 0
     
     def show_hand(self):
-        # showing values for all dices
-        # TO DO: fancy dices
+        # showing all dices
         if DICE_SIDES == 6:
             dice_lst = []
             for dice in self.dices.values():
@@ -34,27 +34,28 @@ class Hand(object):
             print("\n")
         
     def store(self,dice_to_store):
+        # dices_to_store: string with id's of dice to be stores
+        # returns list of store dice
         # storing dices, so they won't be rerolled
         # TO DO:    check if at least one dice got stored this turn
         #           check if valid input
-        stored_before = 0
-        stored_after = 0
-        while stored_before == stored_after:
-            stored_before = self.count_stored()
+        stored = []
+        while len(stored) == 0:
             dice_to_store = dice_to_store.split()        
-            
             try:
                 for dice in dice_to_store:
+                    ref = self.dices["D"+dice].is_stored()
                     self.dices["D"+dice].store()
+                    if ref != self.dices["D"+dice].is_stored():
+                        stored.append(dice)                        
             except KeyError:
                 print("\nWrong input for storing dices!")
             except:
                 print("Man, aren't you crative... unexpected error occured, congratulations!")
-                
-            stored_after = self.count_stored()
-            if stored_before == stored_after:
+            if len(stored) == 0:
                 dice_to_store = input("You need to store at least one dice that hasn't been stored yet."\
                       "\nTry again: ")
+        return stored
         
     
     def count_stored(self):
@@ -64,13 +65,23 @@ class Hand(object):
                 stored += 1
         return stored
         
-    def score(self):
+    def reroll_valid(self, roll):
         # returning score counted for dices
         # TO DO: implement function for counting score
         dice_count = {}
-        for dice in self.dices.values():
-            dice_count[dice.get_dice()] = dice_count.get(dice.get_dice(), 0) + 1
+        for dice in self.dices:
+            if dice.strip("D") in roll:
+                dice_count[self.dices[dice].get_dice()] = dice_count.get(self.dices[dice].get_dice(), 0) + 1  
         return score.score(dice_count)
+    
+    def update_score(self, roll):
+        dice_count = {}
+        for dice in self.dices:
+            if dice.strip("D") in roll:
+                dice_count[self.dices[dice].get_dice()] = dice_count.get(self.dices[dice].get_dice(), 0) + 1  
+        self.hand_score += score.score(dice_count)
+        return self.hand_score
+        
         
     def all_stored(self):
         # returns True if all dices are stored
@@ -82,12 +93,23 @@ class Hand(object):
     
     def reroll_unstored(self):
         # rerolling all unstored dices
-        for dice in self.dices.values():
-            if not dice.is_stored():
-                dice.roll_dice()
+        rerolled = []
+        for dice in self.dices:
+            if not self.dices[dice].is_stored():
+                self.dices[dice].roll_dice()
+                rerolled.append(dice.strip("D"))
+        return rerolled   
+    
+    def return_unstored(self):
+        # rerolling all unstored dices
+        rerolled = []
+        for dice in self.dices:
+            if not self.dices[dice].is_stored():
+                rerolled.append(dice.strip("D"))
+        return rerolled
+        
     
 class Dice(Hand):
-    
     def __init__(self):
         self.val = random.randint(1, DICE_SIDES)
         self.stored = False

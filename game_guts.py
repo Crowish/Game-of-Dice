@@ -50,8 +50,7 @@ def create_players():
     no_players = 0
     while not no_players:
         try:
-            #rounds = int(input("Set number of rounds: "))
-            no_players = int(input("Set number of players: "))
+            no_players = int(input("\nSet number of players: "))
         except ValueError:
             print("That wasn't really just a number, now was it...?"\
                   "\nCome on, try again\n")

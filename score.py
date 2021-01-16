@@ -7,7 +7,7 @@ Created on Thu Jan 14 11:10:41 2021
 """
 
 
-def score(dices):
+def score(dices, show):
     # dices = dictionary of dices
     # assumption: dice out of partial straight gets score
     
@@ -27,11 +27,13 @@ def score(dices):
             partial_high = False
             
     if straight == True:
-        print("FULL STRAIGHT")
+        if show:
+            print("FULL STRAIGHT")
         score = 1500
         return score
     elif partial_low == True:
-        print("Partial straight 1-5")
+        if show:
+            print("Partial straight 1-5")
         score = 500
         if dices.get(1,0) == 2:
             score += 100
@@ -39,7 +41,8 @@ def score(dices):
             score += 50            
         return score
     elif partial_high == True:
-        print("Partial straight 2-6")
+        if show:
+            print("Partial straight 2-6")
         score = 750
         if dices.get(5,0) == 2:
             score += 50            

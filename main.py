@@ -5,7 +5,7 @@ Created on Thu Jan 14 09:36:02 2021
 
 @author: crow
 """
-from game_guts import create_players, play_game
+from game_guts import create_players, play_game, reset_score
 from printing import show_rules
         
 if __name__ == '__main__':
@@ -15,6 +15,7 @@ if __name__ == '__main__':
     players = create_players()
     play = True
     while play == True:
+        reset_score(players)
         play_game(players)
         if input("Play again? (yes/no)\n") == "yes":
             play = True

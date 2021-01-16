@@ -102,4 +102,6 @@ def play_game(players):
     
         
         
-        
+def reset_score(players):
+    for player in players.values():
+        player.reset_score()

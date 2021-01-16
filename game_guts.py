@@ -90,7 +90,7 @@ def play_game(players):
             print("\n\nEnd of round\n\n")
             for player in players.values():
                 print(f"{player.get_name()} has total of {player.get_total_score()} points")
-            input("Press enter to resume")
+            input("\nPress enter to resume")
         
     
     print("\n@@@@@@@@@@@@ Goal has been reached @@@@@@@@@@@@\n")

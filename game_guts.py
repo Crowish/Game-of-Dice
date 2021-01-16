@@ -14,12 +14,12 @@ def play_hand():
     # implementation of single round of one player
     hand = Hand()
 #    forcing dice values for testing
-#    hand.dices['D1'].val = 2
-#    hand.dices['D2'].val = 3
-#    hand.dices['D3'].val = 4
-#    hand.dices['D4'].val = 6
-#    hand.dices['D5'].val = 3
-#    hand.dices['D6'].val = 2
+#    hand.dices['D1'].val = 1
+#    hand.dices['D2'].val = 1
+#    hand.dices['D3'].val = 1
+#    hand.dices['D4'].val = 1
+#    hand.dices['D5'].val = 1
+#    hand.dices['D6'].val = 1
     hand.show_hand()
     rerolled = hand.return_unstored()
     while not hand.all_stored():
@@ -37,7 +37,8 @@ def play_hand():
             stored = hand.store(input("Pick dice to store (numbers 1-6 separated by whitespace)\n"))
             rerolled = hand.reroll_unstored()
             curr_score = hand.update_score(stored)
-            print("Current score for stored:", curr_score)
+            if rerolled == 0:
+                print("Current score for stored:", curr_score)
         else:
             stored = hand.store(input("Pick dice to store (numbers 1-6 separated by whitespace)\n"))
             rerolled = hand.reroll_unstored()

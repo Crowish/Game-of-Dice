@@ -72,14 +72,14 @@ class Hand(object):
         for dice in self.dices:
             if dice.strip("D") in roll:
                 dice_count[self.dices[dice].get_dice()] = dice_count.get(self.dices[dice].get_dice(), 0) + 1  
-        return score.score(dice_count)
+        return score.score(dice_count, False)
     
     def update_score(self, roll):
         dice_count = {}
         for dice in self.dices:
             if dice.strip("D") in roll:
                 dice_count[self.dices[dice].get_dice()] = dice_count.get(self.dices[dice].get_dice(), 0) + 1  
-        self.hand_score += score.score(dice_count)
+        self.hand_score += score.score(dice_count, True)
         return self.hand_score
         
         
@@ -98,6 +98,9 @@ class Hand(object):
             if not self.dices[dice].is_stored():
                 self.dices[dice].roll_dice()
                 rerolled.append(dice.strip("D"))
+                
+        if len(rerolled) > 0:
+            print("\n\n\n...rerolling unstored dice...\n\n\n")
         return rerolled   
     
     def return_unstored(self):

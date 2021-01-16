@@ -36,7 +36,6 @@ def play_hand():
         elif len(rerolled) > 0:
             stored = hand.store(input("Pick dice to store (numbers 1-6 separated by whitespace)\n"))
             rerolled = hand.reroll_unstored()
-            print("\n\n\n...rerolling unstored dice...\n\n\n")
             curr_score = hand.update_score(stored)
             print("Current score for stored:", curr_score)
         else:
@@ -69,7 +68,7 @@ def play_game(players):
     no_players = len(players)
     while not goal:
         try:
-            goal = int(input("Set goal: "))
+            goal = int(input("\nSet goal: "))
         except ValueError:
             print("That wasn't really just a number, now was it...?"\
                   "\nCome on, try again\n")
@@ -89,13 +88,13 @@ def play_game(players):
                     highest_score = player.get_total_score()
             i += 1
         if highest_score < goal:
-            print("n\n\nEnd of round")
+            print("\n\nEnd of round\n\n")
             for player in players.values():
                 print(f"{player.get_name()} has total of {player.get_total_score()} points")
             input("Press enter to resume")
         
     
-    print("\nGoal has been reached\n")
+    print("\n@@@@@@@@@@@@ Goal has been reached @@@@@@@@@@@@\n")
     
     table = sorted(players.items(), key=lambda item: item[1].get_total_score(), reverse=True)
     for item in table:

@@ -45,3 +45,6 @@ class Player(object):
     def get_total_score(self):
         return self.score
     
+    def reset_score(self):
+        self.score = 0
+    

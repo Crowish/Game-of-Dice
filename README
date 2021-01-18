@@ -1,21 +1,4 @@
-!!!MAKING OF THIS BABY HERE IS STILL IN PROGRESS!!!
-
-Run main to play
-
-Scoring:
-
-	Each 1		100
-	Each 5		50
-	Three 1s 	300
-	Three 2s 	200
-	Three 3s 	300
-	Three 4s 	400
-	Three 5s 	500
-	Three 6s 	600 
-
-	three of more of a kind cauted as base_value_for_three_of_a_kind * (number_of_dices_of_a_kind - 2)
-
-	straight (1-2-3-4-5-6) scoring 3000
+Making still in progress
 
 requirements:
 	-python
